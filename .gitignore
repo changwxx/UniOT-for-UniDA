@@ -1,0 +1,11 @@
+checkpoint
+log
+used
+script/output
+script/myemail
+model
+__pycache__
+
+script/officehome1.sh
+script/officehome2.sh
+config/visda-config.yaml

@@ -1,12 +1,10 @@
 # [NeurIPS 2022 Spotlight] Unified Optimal Transport Framework for Universal Domain Adaptation
 
-Code release for Unified Optimal Transport Framework for Universal Domain Adaptation (NeurIPS 2022 Spotlight).
+Code release for **Unified Optimal Transport Framework for Universal Domain Adaptation (NeurIPS 2022 Spotlight)**.
 
-[[paper]](https://arxiv.org/abs/2210.17067) [[poster]]() [[video]]() [[知乎]]()
+[[paper]](https://arxiv.org/abs/2210.17067) [[poster]]() [[video]]() [[slides]]() [[知乎]]()
 
 ![](UniOT-pipeline.png)
-
-
 
 ## Requirements
 * Python 3.7+
@@ -32,7 +30,8 @@ pip install -r requirements.txt
 
 * For OfficeHome dataset, make sure that your folder name is `RealWorld` instead of `Real World`.
 * Modify `root_path` with `/path/to/your/dataset/` in config files `./config/<dataset>-config.yaml`.
-* `mkdir log`
+* Make a log directory by ```mkdir ./log```.
+* Make a model directory by ```mkdir ./model```. Download ImageNet pretrained model from [Google Drive](https://drive.google.com/file/d/1wWsZYeQ3b1Zd5R5TRmVeAxYlEU3KHuy2/view?usp=sharing), then put the downloaded model into ```./model```. 
 
 ## Getting started
 * Train with command line (take `office` for example)
@@ -65,7 +64,6 @@ pip install -r requirements.txt
     sbatch office31.sh      # or officehome/visda/domainnet
     ```
 
-
 * Monitor (TensorBoard required)
     ```
     tensorboard --logdir=./log --port xxxx
@@ -75,7 +73,6 @@ pip install -r requirements.txt
     ```
     python eval.py --gpu 0 --dataset office31 --source amazon --target dslr --model_path /path/to/your/model/final.pkl
     ```
-
 
 ## Checkpoints
 We provide the checkpoints for Office, OfficeHome, VisDA and DomainNet at [Google Drive](https://drive.google.com/drive/folders/1TMz7lX9Seu3-IFCco2aiyLmc0sVj2Lps?usp=sharing).

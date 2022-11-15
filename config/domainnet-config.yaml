@@ -1,0 +1,41 @@
+data:
+  dataset:
+    name: domainnet # choices are ['office31', 'officehome', 'visda2017', 'domainnet']
+    root_path: /public/home/changwx/p300/dataset/domainnet # /path/to/dataset/root
+    s_txt_path: <current_dir>/txt/domainnet/<source>_train.txt # /path/to/source_txt
+    t_txt_path: <current_dir>/txt/domainnet/<target>_train.txt # /path/to/target_txt
+    source_default: painting # source domain
+    target_default: real # target domain
+    n_share: 150 # number of common classes
+    n_source_private: 50 # number of source-private classes
+    n_total: 345 # number of classes in total
+
+  dataloader:
+    class_balance: true #
+    data_workers: 4 # how many workers to use for train dataloaders
+    batch_size: 36 # batch_size for source domain and target domain respectively
+
+model:
+  base_model: resnet50 
+  pretrained_model_path: <current_dir>/model/resnet50-19c8e357.pth # /path/to/pretrained/model
+
+param:
+  K: 1000
+  gamma: 0.7
+  mu: 1.0
+  temp: 0.1
+  lam: 0.1
+  MQ_size: 5000
+  
+train:
+  min_step: 10000 # minimum steps to run. run epochs until it exceeds the minStep
+  lr: 0.01 # learning rate for new layers. learning rate for finetune is 1/10 of lr
+  weight_decay: 0.0005
+  sgd_momentum: 0.9
+
+test:
+  test_interval: 1000 # interval of two continuous test phase
+
+log:
+  root_dir: <current_dir>/log/<exp>/<transfer_task>_<now> # the log directory (log directory will be {root_dir}/{exp}/a2d_now)
+  log_interval: 1000 # steps to log scalars
