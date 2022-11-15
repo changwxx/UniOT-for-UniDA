@@ -2,7 +2,8 @@
 
 Code release for **Unified Optimal Transport Framework for Universal Domain Adaptation (NeurIPS 2022 Spotlight)**.
 
-[[paper]](https://arxiv.org/abs/2210.17067) [[poster]]() [[video]]() [[slides]]() [[知乎]]()
+[[paper]](https://arxiv.org/abs/2210.17067) 
+<!-- [[poster]]() [[video]]() [[slides]]() [[知乎]]() -->
 
 ![](UniOT-pipeline.png)
 
