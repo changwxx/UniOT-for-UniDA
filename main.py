@@ -167,7 +167,13 @@ while global_step < args.train.min_step:
             # adaptive update for marginal probability vector
             beta = mu*beta + (1-mu)*new_beta
 
-            loss_CCD = criterion(after_lincls_t[high_conf_label_id,:], high_conf_label[high_conf_label_id])
+            # fix the bug raised in https://github.com/changwxx/UniOT-for-UniDA/issues/1
+            # Due to mini-batch sampling, current mini-batch samples might be all target-private. 
+            # (especially when target-private samples dominate target domain, e.g. OfficeHome)
+            if high_conf_label_id.size(0) > 0:
+                loss_CCD = criterion(after_lincls_t[high_conf_label_id,:], high_conf_label[high_conf_label_id])
+            else:
+                loss_CCD = 0
         else:
             loss_CCD = 0
         
